@@ -1,4 +1,5 @@
 # ArrayList
+
 > 생성일: 2026-06-11 | Claude Code theorist 에이전트로 생성
 
 ---
@@ -11,13 +12,15 @@
 
 ## 언제 쓰나?
 
-| 상황 | 예시 문제 유형 |
-|------|--------------|
-| 크기가 미리 정해지지 않은 리스트 관리 | 조건 필터링 후 결과 수집 |
-| 순서가 중요한 데이터 | 정렬, 순위 계산 |
-| 인덱스로 임의 접근이 필요할 때 | 슬라이딩 윈도우, 투 포인터 |
-| BFS/DFS 결과 경로 추적 | 최단 경로 저장 |
-| 그래프 인접 리스트 표현 | 그래프 탐색 문제 |
+
+| 상황                    | 예시 문제 유형        |
+| --------------------- | --------------- |
+| 크기가 미리 정해지지 않은 리스트 관리 | 조건 필터링 후 결과 수집  |
+| 순서가 중요한 데이터           | 정렬, 순위 계산       |
+| 인덱스로 임의 접근이 필요할 때     | 슬라이딩 윈도우, 투 포인터 |
+| BFS/DFS 결과 경로 추적      | 최단 경로 저장        |
+| 그래프 인접 리스트 표현         | 그래프 탐색 문제       |
+
 
 ---
 
@@ -30,13 +33,15 @@
 추가(add) → 용량 초과 → 새 배열(용량 * 1.5) 생성 → 복사 → 참조 교체
 ```
 
-| 동작 | 내부 처리 | 비고 |
-|------|-----------|------|
-| get(i) | 배열 직접 접근 | O(1) |
-| add(e) | 마지막 인덱스+1 저장 | O(1) 평균, O(n) 드물게 |
-| add(i, e) | i 이후 원소 한 칸씩 이동 | O(n) |
-| remove(i) | i 이후 원소 한 칸씩 앞으로 이동 | O(n) |
-| contains(e) | 처음부터 선형 탐색 | O(n) |
+
+| 동작          | 내부 처리               | 비고                |
+| ----------- | ------------------- | ----------------- |
+| get(i)      | 배열 직접 접근            | O(1)              |
+| add(e)      | 마지막 인덱스+1 저장        | O(1) 평균, O(n) 드물게 |
+| add(i, e)   | i 이후 원소 한 칸씩 이동     | O(n)              |
+| remove(i)   | i 이후 원소 한 칸씩 앞으로 이동 | O(n)              |
+| contains(e) | 처음부터 선형 탐색          | O(n)              |
+
 
 ---
 
@@ -156,15 +161,17 @@ list.sort((a, b) -> a[0] != b[0] ? a[0] - b[0] : b[1] - a[1]);
 
 ## 시간 / 공간 복잡도
 
-| 연산 | 복잡도 | 비고 |
-|------|--------|------|
-| get(index) | O(1) | 인덱스 직접 접근 |
-| add(e) — 끝에 추가 | O(1) 평균 | 용량 확장 시 O(n) |
-| add(index, e) — 중간 삽입 | O(n) | 이후 원소 이동 |
-| remove(index) | O(n) | 이후 원소 이동 |
-| contains(e) | O(n) | 선형 탐색 |
-| sort() | O(n log n) | TimSort |
-| 공간 | O(n) | 내부 배열 크기 |
+
+| 연산                    | 복잡도        | 비고           |
+| --------------------- | ---------- | ------------ |
+| get(index)            | O(1)       | 인덱스 직접 접근    |
+| add(e) — 끝에 추가        | O(1) 평균    | 용량 확장 시 O(n) |
+| add(index, e) — 중간 삽입 | O(n)       | 이후 원소 이동     |
+| remove(index)         | O(n)       | 이후 원소 이동     |
+| contains(e)           | O(n)       | 선형 탐색        |
+| sort()                | O(n log n) | TimSort      |
+| 공간                    | O(n)       | 내부 배열 크기     |
+
 
 ---
 
@@ -182,10 +189,13 @@ list.sort((a, b) -> a[0] != b[0] ? a[0] - b[0] : b[1] - a[1]);
 
 ## 연습 문제 (프로그래머스)
 
-| 레벨 | 문제명 | 핵심 포인트 | 링크 |
-|------|--------|-------------|------|
-| Lv1 | 나누어 떨어지는 숫자 배열 | 필터링 후 정렬, 빈 결과 처리 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=1&search=나누어+떨어지는+숫자+배열) |
-| Lv2 | 타겟 넘버 | ArrayList로 DFS 경로 관리 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=2&search=타겟+넘버) |
-| Lv2 | 게임 맵 최단거리 | 인접 리스트 + BFS 탐색 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=2&search=게임+맵+최단거리) |
-| Lv2 | 더 맵게 | 우선순위 큐와 리스트 병행 활용 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=2&search=더+맵게) |
-| Lv3 | 가장 먼 노드 | 인접 리스트 구성 + BFS 거리 계산 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=3&search=가장+먼+노드) |
+
+| 레벨  | 문제명            | 핵심 포인트                      | 링크                                                                                                             |
+| --- | -------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Lv1 | 나누어 떨어지는 숫자 배열 | 필터링 후 정렬, 빈 결과 처리           | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=1&search=나누어+떨어지는+숫자+배열) |
+| Lv1 | 두 개 뽑아서 더하기    | ArrayList에 결과 담고 중복 제거 후 정렬 | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=1&search=두+개+뽑아서+더하기)    |
+| Lv1 | 체육복            | 리스트로 여벌/도난 관리               | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=1&search=체육복)            |
+| Lv2 | 의상             | 카테고리별 리스트 그룹핑               | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=2&search=의상)             |
+| Lv2 | 숫자 블록          | 리스트 순회 + 조건 필터링             | [풀러가기](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=2&search=숫자+블록)          |
+
+
