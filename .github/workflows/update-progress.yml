@@ -1,0 +1,56 @@
+name: 📊 Progress Update
+
+on:
+  push:
+    paths:
+      - 'PROGRESS.md'
+      - 'problems/**'
+      - 'theory/**'
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Calculate Progress
+        id: stats
+        run: |
+          # 완료된 Day 수 계산
+          DONE=$(grep -c '\[x\]' PROGRESS.md 2>/dev/null || echo 0)
+          TOTAL=40
+          PCT=$(( DONE * 100 / TOTAL ))
+
+          # 풀이 파일 수
+          JAVA=$(find problems -name "*.java" 2>/dev/null | wc -l | tr -d ' ')
+
+          # 이론 파일 수
+          THEORY=$(find theory -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+
+          echo "done=$DONE" >> $GITHUB_OUTPUT
+          echo "pct=$PCT" >> $GITHUB_OUTPUT
+          echo "java=$JAVA" >> $GITHUB_OUTPUT
+          echo "theory=$THEORY" >> $GITHUB_OUTPUT
+
+      - name: Update README Badge Lines
+        run: |
+          DONE=${{ steps.stats.outputs.done }}
+          PCT=${{ steps.stats.outputs.pct }}
+          JAVA=${{ steps.stats.outputs.java }}
+          THEORY=${{ steps.stats.outputs.theory }}
+
+          # README의 진도 숫자 업데이트
+          sed -i "s/\`[0-9]* \/ 40 Day\`/\`$DONE \/ 40 Day\`/" README.md
+          sed -i "s/\`[0-9]* 문제\`/\`$JAVA 문제\`/" README.md
+          sed -i "s/\`[0-9]* \/ 7 챕터\`/\`$THEORY \/ 7 챕터\`/" README.md
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git add README.md && git commit -m "🤖 자동 진도 업데이트 (${{ steps.stats.outputs.pct }}%)")
+          git push
