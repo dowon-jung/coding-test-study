@@ -9,7 +9,7 @@
 
 | Day | 주제 | 체크 | 풀이 수 | 메모 |
 |-----|------|------|---------|------|
-| Day 1 | ArrayList / HashMap / HashSet | [ ] | 0 | |
+| Day 1 | ArrayList / HashMap / HashSet | [x] | 2 | 이론 4개 + 기초 자료구조 |
 | Day 2 | PriorityQueue / Stack / Deque | [ ] | 0 | |
 | Day 3 | BufferedReader + StringTokenizer | [ ] | 0 | |
 | Day 4 | 형변환 + 정렬 기초 | [ ] | 0 | |
@@ -84,9 +84,9 @@
 
 | 항목 | 현황 |
 |------|------|
-| 완료 Day | 0 / 40 |
-| 총 풀이 수 | 0 / 약 60문제 |
-| 전체 진도율 | 0% |
+| 완료 Day | 1 / 40 |
+| 총 풀이 수 | 2 / 약 60문제 |
+| 전체 진도율 | 2.5% |
 
 ---
 
